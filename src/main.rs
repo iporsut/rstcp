@@ -1,5 +1,6 @@
 use std::net::{TcpListener, TcpStream};
 use std::io::{self, Write, BufRead, BufReader};
+use std::thread;
 
 fn handle_client(stream: TcpStream) -> io::Result<()> {
     write!(&stream, "Enter your name: ")?;
@@ -18,7 +19,9 @@ fn main() {
     for stream in listener.incoming() {
         match stream {
             Ok(stream) => {
-                handle_client(stream).unwrap();
+                thread::spawn(|| {
+                    handle_client(stream).unwrap();
+                });
             }
             Err(_) => {
             }
