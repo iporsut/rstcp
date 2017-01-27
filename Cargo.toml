@@ -1,5 +1,5 @@
 [package]
-name = "hello-tcp"
+name = "rstcp"
 version = "0.1.0"
 authors = ["Weerasak Chongnguluam <singpor@gmail.com>"]
 
